@@ -1,2 +1,2 @@
 Accuracy
-Initial code: 
+Initial code:  Train Accuracy: 98.090909 %  Test Accuracy: 88.235294 % 
