@@ -1,2 +1,10 @@
 Accuracy
-Initial code:  Train Accuracy: 98.090909 %  Test Accuracy: 88.235294 % 
+
+Optimising MATLAB code:
+Initial code:  
+
+Train Accuracy: 98.181818 %  Test Accuracy: 88.843813 %  
+min(min(w12)) = -0.5127, max(max(w12)) = 0.4119
+min(min(w23)) = -0.7963, max(max(w23)) = 0.6964
+min(min(b12)) = -2.1865, max(max(b12)) = 2.5336
+min(min(b23)) = -1.1761, max(max(b23)) = 0.8435               
