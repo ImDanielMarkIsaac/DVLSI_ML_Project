@@ -15,11 +15,15 @@ w23 = randn(10,hn1)*sqrt(2/hn1);
 b12 = randn(hn1,1);
 b23 = randn(10,1);
 
-eta = 0.01; %learning rate
+% eta = 0.01; %learning rate
+eta = 0.05; %learning rate
 
+% epochs = 50; %Number of training epochs
 epochs = 50; %Number of training epochs
 
-m = 10; %Minibatch size
+
+% m = 10; %Minibatch size
+m = 20; %Minibatch size
 
 images1 = images;   %initial value
 
