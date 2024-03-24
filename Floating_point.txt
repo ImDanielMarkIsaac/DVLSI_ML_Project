@@ -16,3 +16,12 @@ min(min(w12)) = -0.4171, max(max(w12)) = 0.3690
 min(min(w23)) = -0.9657, max(max(w23)) = 0.9518
 min(min(b12)) = -1.7840, max(max(b12)) = 2.1059
 min(min(b23)) = -1.5851, max(max(b23)) = 1.2053               
+
+
+Iteration 2:
+Changes: Changed alpha value from 0.02 to 0.001, increased epochs from 50 to 75
+Train Accuracy: 98.363636 %  Test Accuracy: 90.872211 %
+min(min(w12)) = -0.3865, max(max(w12)) = 0.3364
+min(min(w23)) = -0.9759, max(max(w23)) = 0.7077
+min(min(b12)) = -1.7817, max(max(b12)) = 1.5164
+min(min(b23)) = -1.4572, max(max(b23)) = 1.1810               
