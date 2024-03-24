@@ -8,3 +8,11 @@ min(min(w12)) = -0.5127, max(max(w12)) = 0.4119
 min(min(w23)) = -0.7963, max(max(w23)) = 0.6964
 min(min(b12)) = -2.1865, max(max(b12)) = 2.5336
 min(min(b23)) = -1.1761, max(max(b23)) = 0.8435               
+
+Iteration 1:
+No change:
+Train Accuracy: 98.454545 %  Test Accuracy: 89.655172 % 
+min(min(w12)) = -0.4171, max(max(w12)) = 0.3690
+min(min(w23)) = -0.9657, max(max(w23)) = 0.9518
+min(min(b12)) = -1.7840, max(max(b12)) = 2.1059
+min(min(b23)) = -1.5851, max(max(b23)) = 1.2053               
