@@ -78,3 +78,14 @@ min(min(w12)) = -0.3867, max(max(w12)) = 0.3356
 min(min(w23)) = -0.4851, max(max(w23)) = 0.5185
 min(min(b12)) = -1.9511, max(max(b12)) = 2.9526
 min(min(b23)) = -0.7846, max(max(b23)) = 1.1083
+
+
+Iteration 7:
+Changes:
+    semeion_top:      hn1 = 60 from 55
+
+Train Accuracy: 99.909091 %  Test Accuracy: 93.306288 % 
+min(min(w12)) = -0.3714, max(max(w12)) = 0.3710
+min(min(w23)) = -0.5724, max(max(w23)) = 0.5227
+min(min(b12)) = -1.9179, max(max(b12)) = 1.5894
+min(min(b23)) = -1.2550, max(max(b23)) = 0.9278

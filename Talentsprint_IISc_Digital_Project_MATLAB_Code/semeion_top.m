@@ -12,11 +12,11 @@ if (load_randomized_data)
 else
     %Load Data from .data file
     %This data is arranged in increasing order of digit. so randomize
-    data = load('semeion.data');
+    data = load('semeion.datamin(min(w12))');
     data = data(randperm(size(data, 1)), :); %Randomize data rows
 end
 
-hn1 = 55; %Number of neurons in the first hidden layer
+hn1 = 60; %Number of neurons in the first hidden layer
 
 %divide the dataset into training and testing
 traind = 1100; % Training set
