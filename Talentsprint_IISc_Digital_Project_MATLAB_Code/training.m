@@ -15,15 +15,27 @@ w23 = randn(10,hn1)*sqrt(2/hn1);
 b12 = randn(hn1,1);
 b23 = randn(10,1);
 
+% w12 = temp_w12;
+% w23 = temp_w23;
+% b12 = temp_b12;
+% b23 = temp_b23;
+
+
+% % % To save initial parameters
+% temp_w12 = w12;
+% temp_w23 = w23;
+% temp_b12 = b12;
+% temp_b23 = b23;
+
 % eta = 0.01; %learning rate
-eta = 0.05; %learning rate
+eta = 0.025; %learning rate
 
 % epochs = 50; %Number of training epochs
-epochs = 50; %Number of training epochs
+epochs = 80; %Number of training epochs
 
 
 % m = 10; %Minibatch size
-m = 20; %Minibatch size
+m = 30; %Minibatch size
 
 images1 = images;   %initial value
 
@@ -60,7 +72,7 @@ for k = 1:epochs %Outer epoch loop
     
     end
     fprintf('Epochs: %d \n', k);
-    [images1,y] = shuffle(images1,y); %Shuffles order of the images for next epoch
+    % [images1,y] = shuffle(images1,y); %Shuffles order of the images for next epoch
 end
 
 %Return trained weights and biases

@@ -39,3 +39,31 @@ min(min(w12)) = -0.5156, max(max(w12)) = 0.4506
 min(min(w23)) = -0.6390, max(max(w23)) = 0.4559
 min(min(b12)) = -1.8458, max(max(b12)) = 2.1640
 min(min(b23)) = -0.4066, max(max(b23)) = 0.7774 
+
+
+Iteration 4:
+Changes:
+    semeion_top:      hn1 = 50 from 20
+    training:         eta = 0.05 from 0.01, epochs = 50 from 75, m = 20 from 10
+    leaky_relu:       slope = 0.025 from 0.001
+    grad_leaky_relu:  slope = 0.025
+
+Train Accuracy: 99.818182 %  Test Accuracy: 91.886410 % 
+min(min(w12)) = -0.5156, max(max(w12)) = 0.4506
+min(min(w23)) = -0.6390, max(max(w23)) = 0.4559
+min(min(b12)) = -1.8458, max(max(b12)) = 2.1640
+min(min(b23)) = -0.4066, max(max(b23)) = 0.7774 
+
+
+Iteration 5:
+Changes:
+    semeion_top:      hn1 = 55 from 50
+    training:         eta = 0.025 from 0.05, epochs = 80 from 50, m = 30 from 20
+    leaky_relu:       slope = 0.02 from 0.025
+    grad_leaky_relu:  slope = 0.02 from 0.025
+
+Train Accuracy: 99.454545 %  Test Accuracy: 92.292089 % 
+min(min(w12)) = -0.3784, max(max(w12)) = 0.3841
+min(min(w23)) = -0.5346, max(max(w23)) = 0.5348
+min(min(b12)) = -2.9268, max(max(b12)) = 2.7533
+min(min(b23)) = -1.0896, max(max(b23)) = 1.0909 

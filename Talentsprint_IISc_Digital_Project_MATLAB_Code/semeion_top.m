@@ -1,5 +1,5 @@
 %Top Script to Train and Classify Handwritten Digits
-clear all;
+% clear all;
 
 disp('Starting ...');
 
@@ -16,7 +16,7 @@ else
     data = data(randperm(size(data, 1)), :); %Randomize data rows
 end
 
-hn1 = 50; %Number of neurons in the first hidden layer
+hn1 = 55; %Number of neurons in the first hidden layer
 
 %divide the dataset into training and testing
 traind = 1100; % Training set
@@ -43,8 +43,8 @@ fprintf('Test Accuracy: %f %% \n',test_accuracy);
 
 disp('Done!');
 
-%display a sample image
-img_num = 20;
-sample_img_vector = data(img_num,1:256);
-sample_img = reshape(sample_img_vector,[16,16]);
-imshow(sample_img.')
+% %display a sample image
+% img_num = 20;
+% sample_img_vector = data(img_num,1:256);
+% sample_img = reshape(sample_img_vector,[16,16]);
+% imshow(sample_img.')
