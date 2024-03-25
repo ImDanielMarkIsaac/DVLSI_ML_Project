@@ -72,7 +72,7 @@ for k = 1:epochs %Outer epoch loop
     
     end
     fprintf('Epochs: %d \n', k);
-    % [images1,y] = shuffle(images1,y); %Shuffles order of the images for next epoch
+    [images1,y] = shuffle(images1,y); %Shuffles order of the images for next epoch
 end
 
 %Return trained weights and biases
