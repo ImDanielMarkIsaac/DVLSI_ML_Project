@@ -5,7 +5,8 @@ function fr = leaky_relu(x)
             f(i) = x(i);
         else
             % f(i) = 0.02*x(i);
-            f(i) = 0.02*x(i);
+            % f(i) = 0.02*x(i);     0.019531250000000
+            f(i) = 0.019531250000000*x(i); 
         end
     end
     fr = f;

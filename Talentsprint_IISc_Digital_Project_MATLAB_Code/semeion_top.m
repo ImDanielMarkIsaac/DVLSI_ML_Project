@@ -27,8 +27,8 @@ test_data = data((traind + (1:testd)),:);
 %Training function to get weights and biases and save them
 %comment out the 2 lines below when a desired test accuracy is reached and
 %you want to run only inference.
-[w12,w23,b12,b23] = training(train_data,traind,hn1);
-save('trained_params.mat','w12','w23','b12','b23');
+% [w12,w23,b12,b23] = training(train_data,traind,hn1);
+% save('trained_params.mat','w12','w23','b12','b23');
 
 %Load the saved training parameters
 load('trained_params.mat','w12','w23','b12','b23');
