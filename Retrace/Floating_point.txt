@@ -10,3 +10,12 @@ min(min(w23)) = -0.829474 % max(max(w23)) = 0.636011 %
 min(min(b12)) = -2.041582 % max(max(b12)) = 2.950160 % 
 min(min(b23)) = -1.167090 % max(max(b23)) = 0.510889 % 
 
+
+Iteration 1:
+No change:
+Train Accuracy: 97.818182 % 
+Test Accuracy: 90.263692 % 
+min(min(w12)) = -0.351958 % max(max(w12)) = 0.387794 % 
+min(min(w23)) = -0.707201 % max(max(w23)) = 0.841700 % 
+min(min(b12)) = -1.803085 % max(max(b12)) = 0.856494 % 
+min(min(b23)) = -0.602452 % max(max(b23)) = 1.565542 %  

@@ -17,9 +17,9 @@ b23 = randn(10,1);
 
 eta = 0.005; %learning rate
 
-epochs = 60; %Number of training epochs
+epochs = 50; %Number of training epochs
 
-m = 1; %Minibatch size
+m = 5; %Minibatch size
 
 images1 = images;   %initial value
 

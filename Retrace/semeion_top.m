@@ -41,7 +41,13 @@ fprintf('Train Accuracy: %f %% \n',train_accuracy);
 test_accuracy = inference(test_data,testd,w12,w23,b12,b23);
 fprintf('Test Accuracy: %f %% \n',test_accuracy);
 
-disp('Done!');
+fprintf("min(min(w12)) = %f %% max(max(w12)) = %f %% \n" ,min(min(w12)),max(max(w12)));
+fprintf("min(min(w23)) = %f %% max(max(w23)) = %f %% \n" ,min(min(w23)),max(max(w23)));
+fprintf("min(min(b12)) = %f %% max(max(b12)) = %f %% \n" ,min(min(b12)),max(max(b12)));
+fprintf("min(min(b23)) = %f %% max(max(b23)) = %f %% \n" ,min(min(b23)),max(max(b23)));
+
+
+% disp('Done!');
 
 %display a sample image
 img_num = 20;
