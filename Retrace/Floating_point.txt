@@ -16,10 +16,23 @@ Changes:
     learning rate = 0.005
     mini batch = 5
     leaky relu slope and dependencies = 0.025
-    
+
 Train Accuracy: 97.818182 % 
 Test Accuracy: 90.263692 % 
 min(min(w12)) = -0.351958 % max(max(w12)) = 0.387794 % 
 min(min(w23)) = -0.707201 % max(max(w23)) = 0.841700 % 
 min(min(b12)) = -1.803085 % max(max(b12)) = 0.856494 % 
 min(min(b23)) = -0.602452 % max(max(b23)) = 1.565542 %  
+
+
+Iteration 2:
+Changes:
+    hn1 = 25 from 20
+    mini batch = 2 from 5
+    
+Train Accuracy: 97.909091 % 
+Test Accuracy: 91.277890 % 
+min(min(w12)) = -0.388538 % max(max(w12)) = 0.363544 % 
+min(min(w23)) = -0.827766 % max(max(w23)) = 0.866710 % 
+min(min(b12)) = -1.238539 % max(max(b12)) = 1.211499 % 
+min(min(b23)) = -1.196542 % max(max(b23)) = 1.164697 % 
