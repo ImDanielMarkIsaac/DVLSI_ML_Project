@@ -4,7 +4,7 @@ function fr = leaky_relu(x)
         if x(i)>=0
             f(i) = x(i);
         else
-            f(i) = 0.025*x(i);
+            f(i) = 0.02*x(i);
         end
     end
     fr = f;

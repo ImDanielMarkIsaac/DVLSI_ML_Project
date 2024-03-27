@@ -48,9 +48,9 @@ fprintf("min(min(b23)) = %f %% max(max(b23)) = %f %% \n" ,min(min(b23)),max(max(
 
 
 % disp('Done!');
-
-%display a sample image
-img_num = 20;
-sample_img_vector = data(img_num,1:256);
-sample_img = reshape(sample_img_vector,[16,16]);
-imshow(sample_img.')
+% 
+% %display a sample image
+% img_num = 20;
+% sample_img_vector = data(img_num,1:256);
+% sample_img = reshape(sample_img_vector,[16,16]);
+% imshow(sample_img.')

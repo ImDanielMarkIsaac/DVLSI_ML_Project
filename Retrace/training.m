@@ -15,9 +15,9 @@ w23 = randn(10,hn1)*sqrt(2/hn1);
 b12 = randn(hn1,1);
 b23 = randn(10,1);
 
-eta = 0.005; %learning rate
+eta = 0.01; %learning rate
 
-epochs = 50; %Number of training epochs
+epochs = 30; %Number of training epochs
 
 m = 2; %Minibatch size
 

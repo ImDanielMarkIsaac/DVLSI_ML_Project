@@ -4,7 +4,7 @@ function fr = grad_leaky_relu(x)
     if x(i)>=0
         f(i) = 1;
     else
-        f(i) = 0.025;
+        f(i) = 0.02;
     end
     end
     fr = f;
