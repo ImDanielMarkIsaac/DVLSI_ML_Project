@@ -11,7 +11,7 @@ function fr = leaky_relu_fixed_point(x)
     %     end
     % end
 
-    [slpfixedfloat , slpfixedinteger ,err] = fixedpoint1(0.02,11,8,1);
+    [slpfixedfloat , slpfixedinteger ,err] = fixedpoint1(0.1,11,8,1);
     [onefixedfloat , onefixedinteger ,err] = fixedpoint1(1,11,8,1);
     for i = 1:length(x)
         if x(i)>=0
