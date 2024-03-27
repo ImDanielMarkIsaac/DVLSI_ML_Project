@@ -50,3 +50,19 @@ min(min(w12)) = -0.356682 % max(max(w12)) = 0.366807 %
 min(min(w23)) = -0.759062 % max(max(w23)) = 0.721533 % 
 min(min(b12)) = -2.019346 % max(max(b12)) = 1.997954 % 
 min(min(b23)) = -1.205960 % max(max(b23)) = 1.593028 % 
+
+
+Iteration 4:
+Changes:
+    hn1 = 30
+    learning rate = 0.0017
+    epochs = 50
+    mini batch = 4 
+    leaky relu slope and dependencies = 0.1
+
+Train Accuracy: 98.454545 % 
+Test Accuracy: 92.089249 % 
+min(min(w12)) = -0.329812 % max(max(w12)) = 0.314806 % 
+min(min(w23)) = -0.598520 % max(max(w23)) = 0.890000 % 
+min(min(b12)) = -2.253654 % max(max(b12)) = 2.643746 % 
+min(min(b23)) = -1.423694 % max(max(b23)) = 0.647960 % 
