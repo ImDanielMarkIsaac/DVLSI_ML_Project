@@ -47,6 +47,10 @@ fprintf('Train Accuracy: %f %% \n',train_accuracy);
 test_accuracy = inference_fixed_point(test_data,testd,w12,w23,b12,b23);
 fprintf('Test Accuracy: %f %% \n',test_accuracy);
 
+%Check Full accuracy
+test_accuracy = inference_fixed_point(data,1593,w12,w23,b12,b23);
+fprintf('Full Test Accuracy: %f %% \n',test_accuracy);
+
 disp('Done!');
 
 % %display a sample image
