@@ -1,5 +1,5 @@
 %Top Script to Train and Classify Handwritten Digits
-clear all;
+% clear all;
 
 disp('Starting ...');
 
@@ -24,11 +24,18 @@ testd = 493; % Testing set
 train_data = data(1:traind,:);
 test_data = data((traind + (1:testd)),:);
 
+% 
+% [w12fixedfloat , w12fixedinteger ,err] = fixedpoint1(w12,11,8,1);
+% [w23fixedfloat , w23fixedinteger ,err] = fixedpoint1(w23,19,16,1);
+% [b12fixedfloat , b12fixedinteger ,err] = fixedpoint1(b12,11,8,1);
+% [b23fixedfloat , b23fixedinteger ,err] = fixedpoint1(b23,35,32,1);
+
+
 %Training function to get weights and biases and save them
 %comment out the 2 lines below when a desired test accuracy is reached and
 %you want to run only inference.
-[w12,w23,b12,b23] = training(train_data,traind,hn1);
-save('trained_params.mat','w12','w23','b12','b23');
+% [w12,w23,b12,b23] = training(train_data,traind,hn1);
+% save('trained_params.mat','w12','w23','b12','b23');
 
 %Load the saved training parameters
 load('trained_params.mat','w12','w23','b12','b23');
@@ -45,6 +52,12 @@ fprintf("min(min(w12)) = %f %% max(max(w12)) = %f %% \n" ,min(min(w12)),max(max(
 fprintf("min(min(w23)) = %f %% max(max(w23)) = %f %% \n" ,min(min(w23)),max(max(w23)));
 fprintf("min(min(b12)) = %f %% max(max(b12)) = %f %% \n" ,min(min(b12)),max(max(b12)));
 fprintf("min(min(b23)) = %f %% max(max(b23)) = %f %% \n" ,min(min(b23)),max(max(b23)));
+
+
+%Check test data accuracy
+data = load('semeion.data');
+test_accuracy = inference_fp_single_image(data,1,w12,w23,b12,b23);
+fprintf('Test Accuracy single: %f %% \n',test_accuracy);
 
 
 % disp('Done!');
