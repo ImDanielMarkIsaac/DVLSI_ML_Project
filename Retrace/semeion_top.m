@@ -62,8 +62,8 @@ fprintf('Test Accuracy single: %f %% \n',test_accuracy);
 
 % disp('Done!');
 % 
-% %display a sample image
-% img_num = 20;
-% sample_img_vector = data(img_num,1:256);
-% sample_img = reshape(sample_img_vector,[16,16]);
-% imshow(sample_img.')
+%display a sample image
+img_num = 40;
+sample_img_vector = data(img_num,1:256);
+sample_img = reshape(sample_img_vector,[16,16]);
+imshow(sample_img.')
