@@ -1,0 +1,12 @@
+Normal Naive approach:
+Train Accuracy: 98.454545 % 
+Test Accuracy: 92.292089 % 
+
+Disregarded fixed point conversion for input image:
+Train Accuracy: 98.454545 % 
+Test Accuracy: 92.292089 % 
+
+
+Final optimisation:
+Train Accuracy: 97.545455 % 
+Test Accuracy: 89.655172 % 

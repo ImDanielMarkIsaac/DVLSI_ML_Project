@@ -1,0 +1,12 @@
+• Problem Statement:
+	Design and implement an ASIC for a Neural Network inference engine.
+• Dataset description:
+	• Semeion Handwritten Digit Dataset (UCI ML Repository)
+	• Reference: https://archive.ics.uci.edu/ml/datasets/semeion+handwritten+digit
+	• Details:
+		➢ Dataset is a 1593 x 256 Matrix
+		➢ 1593 images
+		➢ Each image is 16x16 binary – vectorized to 256 bits
+		➢ 10 Classification outputs – one-hot encoded (1-out-of-10 is 1, rest are 0)
+
+• NOTE: Keep it to 1 slide.

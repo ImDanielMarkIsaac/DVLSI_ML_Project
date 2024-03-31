@@ -1,0 +1,12 @@
+• Tasks you performed on MATLAB.
+• Highlight any optimizations you performed on given code.
+
+• Fixed point design approach:
+	• Bit widths allocated for integer and fraction part.
+	• Total memory needed for weights and biases (in bits).
+	• Size of multiplier needed (Ex: 8 bit x 8 bit) 
+	• Scripting to get HW compatible data.
+
+
+• NOTE: Do not add any accuracy results here, there is a section for that 
+later.
