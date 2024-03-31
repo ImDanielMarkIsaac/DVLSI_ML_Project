@@ -65,8 +65,8 @@ success = 0;
 
     
 
-    % a3 = a3 /(2^32);
-    a3 = bitsra(a3,32);
+    a3 = a3 /(2^64);
+    % a3 = bitsra(a3,32);
 
     fpw = fopen("check_a3_adjust.txt","w");
     fprintf(fpw,"%d \n",a3);
