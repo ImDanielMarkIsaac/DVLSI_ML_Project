@@ -2,9 +2,33 @@
 • Highlight any optimizations you performed on given code.
 
 • Fixed point design approach:
-	• Bit widths allocated for integer and fraction part.
+	• Bit widths allocated for integer and fraction part:
+		w12: Total bit width = 11 , Bit width for integer part = 3, Bit width for fractional part = 8
+		w23: Total bit width = 19 , Bit width for integer part = 3, Bit width for fractional part = 16
+		b12: Total bit width = 11 , Bit width for integer part = 3, Bit width for fractional part = 8
+		b23: Total bit width = 41 , Bit width for integer part = 9, Bit width for fractional part = 32
+
 	• Total memory needed for weights and biases (in bits).
-	• Size of multiplier needed (Ex: 8 bit x 8 bit) 
+		Number of weights in w12 = 30 x 256 = 7680 weights
+		Number of bits required to store w12 = 7680 x 11 = 84,480 bits
+		
+		Number of weights in w23 = 10 x 30 = 300 weights
+		Number of bits required to store w23 = 300 x 19 = 5,700 bits
+
+		Number of biases in b12 = 30 x 1 = 30 biases
+		Number of bits required to store b12 = 30 x 11 = 330 bits
+
+		Number of biases in b23 = 10 x 1 = 10 biases
+		Number of bits required to store b23 = 10 x 41 = 410 bits
+
+		Total memory needed = 84,480 + 5,700 + 330 + 410 = 90,920 bits
+
+	• Size of multiplier needed (Ex: 8 bit x 8 bit)
+		First stage multiplier = 11 bit x 1 bit
+		ReLU_1 stage multiplier = 11 bit x 11 bit
+		Second stage multiplier = 19 bit x 22 bit 
+		ReLU_2 stage multiplier = 41 bit x 41 bit
+
 	• Scripting to get HW compatible data.
 
 
