@@ -74,6 +74,19 @@ Changes:
     epochs = 50
     mini batch = 4
     relu = 0.01
+
+Train Accuracy: 98.818182 % 
+Test Accuracy: 90.060852 % 
+min(min(w12)) = -0.611523 % max(max(w12)) = 0.473114 % 
+min(min(w23)) = -0.781923 % max(max(w23)) = 0.758356 % 
+min(min(b12)) = -1.216356 % max(max(b12)) = 2.149771 % 
+min(min(b23)) = -1.949036 % max(max(b23)) = 0.982079 % 
+
+Iteration 2:
+Changes:
+    hn1 = 21
+    mini batch = 5
+    relu = 0.005
     
 Train Accuracy: 98.818182 % 
 Test Accuracy: 90.060852 % 

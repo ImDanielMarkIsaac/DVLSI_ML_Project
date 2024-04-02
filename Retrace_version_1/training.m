@@ -19,7 +19,7 @@ eta = 0.025; %learning rate
 
 epochs = 50; %Number of training epochs
 
-m = 4; %Minibatch size
+m = 5; %Minibatch size
 
 images1 = images;   %initial value
 
