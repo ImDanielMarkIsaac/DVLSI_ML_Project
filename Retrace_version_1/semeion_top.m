@@ -16,7 +16,7 @@ else
     data = data(randperm(size(data, 1)), :); %Randomize data rows
 end
 
-hn1 = 30; %Number of neurons in the first hidden layer
+hn1 = 25; %Number of neurons in the first hidden layer
 
 %divide the dataset into training and testing
 traind = 1100; % Training set
@@ -34,8 +34,8 @@ test_data = data((traind + (1:testd)),:);
 %Training function to get weights and biases and save them
 %comment out the 2 lines below when a desired test accuracy is reached and
 %you want to run only inference.
-% [w12,w23,b12,b23] = training(train_data,traind,hn1);
-% save('trained_params.mat','w12','w23','b12','b23');
+[w12,w23,b12,b23] = training(train_data,traind,hn1);
+save('trained_params.mat','w12','w23','b12','b23');
 
 %Load the saved training parameters
 load('trained_params.mat','w12','w23','b12','b23');
@@ -54,16 +54,16 @@ fprintf("min(min(b12)) = %f %% max(max(b12)) = %f %% \n" ,min(min(b12)),max(max(
 fprintf("min(min(b23)) = %f %% max(max(b23)) = %f %% \n" ,min(min(b23)),max(max(b23)));
 
 
-%Check test data accuracy
-data = load('semeion.data');
-test_accuracy = inference_fp_single_image(data,1,w12,w23,b12,b23);
-fprintf('Test Accuracy single: %f %% \n',test_accuracy);
-
-
-% disp('Done!');
+% %Check test data accuracy
+% data = load('semeion.data');
+% test_accuracy = inference_fp_single_image(data,1,w12,w23,b12,b23);
+% fprintf('Test Accuracy single: %f %% \n',test_accuracy);
 % 
-%display a sample image
-img_num = 40;
-sample_img_vector = data(img_num,1:256);
-sample_img = reshape(sample_img_vector,[16,16]);
-imshow(sample_img.')
+% 
+% % disp('Done!');
+% % 
+% %display a sample image
+% img_num = 40;
+% sample_img_vector = data(img_num,1:256);
+% sample_img = reshape(sample_img_vector,[16,16]);
+% imshow(sample_img.')
