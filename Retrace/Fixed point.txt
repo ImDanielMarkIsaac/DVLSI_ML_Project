@@ -1,0 +1,10 @@
+Fixed point optimisation:
+Changes:
+    [w12fixedfloat , w12fixedinteger ,err] = fixedpoint1(w12,15,13,1);
+    [b12fixedfloat , b12fixedinteger ,err] = fixedpoint1(b12,16,13,1);
+    [w23fixedfloat , w23fixedinteger ,err] = fixedpoint1(w23,14,12,1);
+    [b23fixedfloat , b23fixedinteger ,err] = fixedpoint1(b23,14,12,1);
+
+Train Accuracy: 98.454545 % 
+Test Accuracy: 92.292089 % 
+Full Test Accuracy: 96.547395 % 

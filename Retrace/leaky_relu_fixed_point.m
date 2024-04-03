@@ -1,4 +1,4 @@
-function fr = leaky_relu_fixed_point(x,trial)
+function fr = leaky_relu_fixed_point(x)
     f = zeros(length(x),1);
 
     % Normal Naive approach
@@ -13,15 +13,15 @@ function fr = leaky_relu_fixed_point(x,trial)
     % [slpfixedfloat , slpfixedinteger ,err] = fixedpoint1(0.1,11,8,1);
     % [onefixedfloat , onefixedinteger ,err] = fixedpoint1(1,11,8,1);
    
-    [slpfixedfloat , slpfixedinteger ,err] = fixedpoint1(0.1,trial+3,trial,1);
-    [onefixedfloat , onefixedinteger ,err] = fixedpoint1(1,trial+3,trial,1);
+    [slpfixedfloat , slpfixedinteger ,err] = fixedpoint1(0.1,14,12,1);
+    [onefixedfloat , onefixedinteger ,err] = fixedpoint1(1,14,12,1);
     
 
     for i = 1:length(x)
         if x(i)>=0
-            f(i) = onefixedinteger*x(i); % Q19.16 * Q19.16 = Q38.32
+            f(i) = onefixedinteger*x(i); % Q14.12 * Q16.13 = Q30.25
         else
-            f(i) = slpfixedinteger*x(i); % Q19.16 * Q19.16 = Q38.32
+            f(i) = slpfixedinteger*x(i); % Q14.12 * Q16.13 = Q30.25
         end
     end
     

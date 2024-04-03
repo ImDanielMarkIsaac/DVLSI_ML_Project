@@ -17,8 +17,8 @@ function fr = leaky_relu_second_stage(x,trial)
     % [slpfixedfloat , slpfixedinteger ,err] = fixedpoint1(0.1,11,8,1);
     % [onefixedfloat , onefixedinteger ,err] = fixedpoint1(1,11,8,1);
 
-    [slpfixedfloat , slpfixedinteger ,err] = fixedpoint1(0.1,trial+3,trial,1);
-    [onefixedfloat , onefixedinteger ,err] = fixedpoint1(1,trial+3,trial,1);
+    [slpfixedfloat , slpfixedinteger ,err] = fixedpoint1(0.1,14,12,1);
+    [onefixedfloat , onefixedinteger ,err] = fixedpoint1(1,14,12,1);
     
     for i = 1:length(x)
         if x(i)>=0

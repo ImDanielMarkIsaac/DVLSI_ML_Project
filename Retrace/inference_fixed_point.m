@@ -1,4 +1,4 @@
-function accuracy = inference_fixed_point(data,testd,w12,w23,b12,b23,trial)
+function accuracy = inference_fixed_point(data,testd,w12,w23,b12,b23)
 %Inference on test data
 
 %Test Data
@@ -39,27 +39,27 @@ end
 % [b12fixedfloat , b12fixedinteger ,err] = fixedpoint1(b12,11,8,1);
 % [b23fixedfloat , b23fixedinteger ,err] = fixedpoint1(b23,11,8,1);
 
-% trial = 16
 
-[w12fixedfloat , w12fixedinteger ,err] = fixedpoint1(w12,trial+3,trial,1);
-[b12fixedfloat , b12fixedinteger ,err] = fixedpoint1(b12,trial+3,trial,1);
-[w23fixedfloat , w23fixedinteger ,err] = fixedpoint1(w23,trial+3,trial,1);
-[b23fixedfloat , b23fixedinteger ,err] = fixedpoint1(b23,trial+3,trial,1);
+
+[w12fixedfloat , w12fixedinteger ,err] = fixedpoint1(w12,15,13,1);
+[b12fixedfloat , b12fixedinteger ,err] = fixedpoint1(b12,16,13,1);
+[w23fixedfloat , w23fixedinteger ,err] = fixedpoint1(w23,14,12,1);
+[b23fixedfloat , b23fixedinteger ,err] = fixedpoint1(b23,14,12,1);
 
 success = 0;
 for i = 1:testd
     % % Final optimisation 2
     % % % Feed forward
     a1 = images(:,i);
-    z2_temp = w12fixedinteger*a1; % Q19.16 
-    z2 = z2_temp + b12fixedinteger; % Q19.16 + Q19.16 = Q19.16
-    a2 = leaky_relu_fixed_point(z2,trial); % Q19.16 * Q19.16 = Q38.32
+    z2_temp = w12fixedinteger*a1; % Q15.13 
+    z2 = z2_temp + b12fixedinteger; % Q15.13 + Q16.13 = Q16.13
+    a2 = leaky_relu_fixed_point(z2); % Q14.12 * Q16.13 = Q30.25
 
-    z3_temp = w23fixedinteger*a2;  % Q19.16 * Q38.32 = Q57.48
-    z3 = z3_temp + b23fixedinteger*(2^(2*trial)); % Q57.48 + Q19.16->Q51.48 = Q57.48
-    a3 = leaky_relu_second_stage(z3,trial); % Q19.16 * Q57.48 = Q76.64
+    z3_temp = w23fixedinteger*a2;  % Q14.12 * Q30.25 = Q44.37
+    z3 = z3_temp + b23fixedinteger*(2^(25)); % Q44.37 + Q14.12->Q39.37 = Q44.37
+    a3 = leaky_relu_fixed_point(z3); % Q14.12 * Q44.37 = Q58.49
 
-    a3 = a3 /(2^64);
+    a3 = a3 /(2^49);
     
     %Get the index of the maximum output
     [maxv1,index1] = max(a3);

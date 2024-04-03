@@ -31,32 +31,32 @@ test_data = data((traind + (1:testd)),:);
 load('trained_params.mat','w12','w23','b12','b23');
 
 
-for i = 1:32
-
-trial = i;
+% for i = 1:32
+% 
+% trial = i;
 
 
 % %Check train data accuracy
-train_accuracy = inference_fixed_point(train_data,traind,w12,w23,b12,b23,trial);
+train_accuracy = inference_fixed_point(train_data,traind,w12,w23,b12,b23);
 fprintf('Train Accuracy: %f %% \n',train_accuracy);
-train_acc(i) = train_accuracy;
+% train_acc(i) = train_accuracy;
 
 %Check test data accuracy
-test_accuracy = inference_fixed_point(test_data,testd,w12,w23,b12,b23,trial);
+test_accuracy = inference_fixed_point(test_data,testd,w12,w23,b12,b23);
 fprintf('Test Accuracy: %f %% \n',test_accuracy);
-test_acc(i) = test_accuracy;
+% test_acc(i) = test_accuracy;
 
 %Check Full accuracy
-test_accuracy = inference_fixed_point(data,1593,w12,w23,b12,b23,trial);
+test_accuracy = inference_fixed_point(data,1593,w12,w23,b12,b23);
 fprintf('Full Test Accuracy: %f %% \n',test_accuracy);
 
 %Check one image accuracy
-[test_accuracy,p,d] = inference_fp_single_image(data,1,w12,w23,b12,b23,trial);
+test_accuracy = inference_fp_single_image(data,1,w12,w23,b12,b23);
 fprintf('Single Image Test Accuracy: %f %% \n',test_accuracy);
 
 disp('Done!');
 
-end
+% end
 
 % %display a sample image
 % img_num = 20;

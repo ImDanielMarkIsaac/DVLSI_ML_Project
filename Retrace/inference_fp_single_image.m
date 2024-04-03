@@ -1,4 +1,4 @@
-function [accuracy, prediction,debug] = inference_fp_single_image(data,testd,w12,w23,b12,b23,trial)
+function [accuracy, prediction] = inference_fp_single_image(data,testd,w12,w23,b12,b23)
 %Inference on test data
 
 %Test Data
@@ -36,29 +36,23 @@ fprintf("Correct answer %d \n",labels_ts(1));
 % [b12fixedfloat , b12fixedinteger ,err] = fixedpoint1(b12,19,16,1);
 % [b23fixedfloat , b23fixedinteger ,err] = fixedpoint1(b23,67,64,1);
 
-[w12fixedfloat , w12fixedinteger ,err] = fixedpoint1(w12,trial+3,trial,1);
-[b12fixedfloat , b12fixedinteger ,err] = fixedpoint1(b12,trial+3,trial,1);
-[w23fixedfloat , w23fixedinteger ,err] = fixedpoint1(w23,trial+3,trial,1);
-[b23fixedfloat , b23fixedinteger ,err] = fixedpoint1(b23,trial+3,trial,1);
-
+[w12fixedfloat , w12fixedinteger ,err] = fixedpoint1(w12,15,13,1);
+[b12fixedfloat , b12fixedinteger ,err] = fixedpoint1(b12,16,13,1);
+[w23fixedfloat , w23fixedinteger ,err] = fixedpoint1(w23,14,12,1);
+[b23fixedfloat , b23fixedinteger ,err] = fixedpoint1(b23,14,12,1);
 
 success = 0;
     
 a1 = images(:,1);
-% a1 = a1*0 + 1;
-z2_temp = w12fixedinteger*a1; % Q8 
-% z2_temp = w12*a1; % Q8 
+z2_temp = w12fixedinteger*a1; % Q15.13 
+z2 = z2_temp + b12fixedinteger; % Q15.13 + Q16.13 = Q16.13
+a2 = leaky_relu_fixed_point(z2); % Q14.12 * Q16.13 = Q30.25
 
+z3_temp = w23fixedinteger*a2;  % Q14.12 * Q30.25 = Q44.37
+z3 = z3_temp + b23fixedinteger*(2^(25)); % Q44.37 + Q14.12->Q39.37 = Q44.37
+a3 = leaky_relu_fixed_point(z3); % Q14.12 * Q44.37 = Q58.49
 
-% z2 = z2_temp + b12fixedinteger; % Q8 + Q8 = Q8
-z2 = z2_temp + b12fixedinteger; % Q8 + Q8 = Q8
-debug = z2;
-
-a2 = leaky_relu_fixed_point(z2,trial); % Q8 * Q8 = Q16 
-z3_temp = w23fixedinteger*a2;  % Q16 * Q16 = Q32
-z3 = z3_temp + b23fixedinteger*(2^(2*trial)); % Q57.48 + Q19.16->Q51.48 = Q57.48
-a3 = leaky_relu_second_stage(z3,trial); % Q19.16 * Q57.48 = Q76.64
-a3 = a3 /(2^64);
+a3 = a3 /(2^49);
 
 %Get the index of the maximum output
 [maxv1,index1] = max(a3);
