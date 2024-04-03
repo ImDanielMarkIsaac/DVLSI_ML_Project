@@ -1,4 +1,4 @@
-function accuracy = inference_fixed_point(data,testd,w12,w23,b12,b23)
+function accuracy = inference_fixed_point(data,testd,w12,w23,b12,b23,trial)
 %Inference on test data
 
 %Test Data
@@ -21,58 +21,44 @@ end
 % [b12fixedfloat , b12fixedinteger ,err] = fixedpoint1(b12,35,32,1);
 % [b23fixedfloat , b23fixedinteger ,err] = fixedpoint1(b23,131,128,1);
 
-% Disregarded fixed point conversion for input image
+% % Disregarded fixed point conversion for input image
 % [w12fixedfloat , w12fixedinteger ,err] = fixedpoint1(w12,19,16,1);
 % [w23fixedfloat , w23fixedinteger ,err] = fixedpoint1(w23,35,32,1);
 % [b12fixedfloat , b12fixedinteger ,err] = fixedpoint1(b12,19,16,1);
 % [b23fixedfloat , b23fixedinteger ,err] = fixedpoint1(b23,67,64,1);
 
-% Final optimisation
-[w12fixedfloat , w12fixedinteger ,err] = fixedpoint1(w12,11,8,1);
-[w23fixedfloat , w23fixedinteger ,err] = fixedpoint1(w23,19,16,1);
-[b12fixedfloat , b12fixedinteger ,err] = fixedpoint1(b12,11,8,1);
-[b23fixedfloat , b23fixedinteger ,err] = fixedpoint1(b23,35,32,1);
+% % Final optimisation
+% [w12fixedfloat , w12fixedinteger ,err] = fixedpoint1(w12,11,8,1);
+% [w23fixedfloat , w23fixedinteger ,err] = fixedpoint1(w23,19,16,1);
+% [b12fixedfloat , b12fixedinteger ,err] = fixedpoint1(b12,11,8,1);
+% [b23fixedfloat , b23fixedinteger ,err] = fixedpoint1(b23,35,32,1);
 
+% % Final optimisation 2
+% [w12fixedfloat , w12fixedinteger ,err] = fixedpoint1(w12,11,8,1);
+% [w23fixedfloat , w23fixedinteger ,err] = fixedpoint1(w23,11,8,1);
+% [b12fixedfloat , b12fixedinteger ,err] = fixedpoint1(b12,11,8,1);
+% [b23fixedfloat , b23fixedinteger ,err] = fixedpoint1(b23,11,8,1);
+
+% trial = 16
+
+[w12fixedfloat , w12fixedinteger ,err] = fixedpoint1(w12,trial+3,trial,1);
+[b12fixedfloat , b12fixedinteger ,err] = fixedpoint1(b12,trial+3,trial,1);
+[w23fixedfloat , w23fixedinteger ,err] = fixedpoint1(w23,trial+3,trial,1);
+[b23fixedfloat , b23fixedinteger ,err] = fixedpoint1(b23,trial+3,trial,1);
 
 success = 0;
-
 for i = 1:testd
-
-    % % Normal Naive approach
-    % % Feed forward
-    % a1 = images(:,i);
-    % [a1fixedfloat , a1fixedinteger ,err] = fixedpoint1(a1,19,16,1);
-    % z2_temp = w12fixedinteger*a1fixedinteger; % Q16 * Q16 = Q32
-    % z2 = z2_temp + b12fixedinteger; % Q32 + Q32 = Q32
-    % a2 = leaky_relu_fixed_point(z2); % Q32 * Q32 = Q64 
-    % z3_temp = w23fixedinteger*a2;  % Q64 * Q64 = Q128
-    % z3 = z3_temp + b23fixedinteger; % Q128 + Q128 = Q128
-    % a3 = leaky_relu_second_stage(z3); % Q128 * Q128 = Q256
-    % a3 = a3 /(2^256);
-
-    % Disregarded fixed point conversion for input image
-    % % Feed forward
-    % a1 = images(:,i);
-    % % [a1fixedfloat , a1fixedinteger ,err] = fixedpoint1(a1,19,16,1);
-    % z2_temp = w12fixedinteger*a1; % Q16 
-    % z2 = z2_temp + b12fixedinteger; % Q16 + Q16 = Q16
-    % a2 = leaky_relu_fixed_point(z2); % Q16 * Q16 = Q32 
-    % z3_temp = w23fixedinteger*a2;  % Q32 * Q32 = Q64
-    % % z3_temp = w23fixedfloat*a2;  % Q32 * Q32 = Q64
-    % z3 = z3_temp + b23fixedinteger; % Q64 + Q64 = Q64
-    % a3 = leaky_relu_second_stage(z3); % Q64 * Q64 = Q128
-    % a3 = a3 /(2^128);
-
-
-    % Final optimisation
-    % % Feed forward
+    % % Final optimisation 2
+    % % % Feed forward
     a1 = images(:,i);
-    z2_temp = w12fixedinteger*a1; % Q8 
-    z2 = z2_temp + b12fixedinteger; % Q8 + Q8 = Q8
-    a2 = leaky_relu_fixed_point(z2); % Q8 * Q8 = Q16 
-    z3_temp = w23fixedinteger*a2;  % Q16 * Q16 = Q32
-    z3 = z3_temp + b23fixedinteger; % Q32 + Q32 = Q32
-    a3 = leaky_relu_second_stage(z3); % Q32 * Q32 = Q64
+    z2_temp = w12fixedinteger*a1; % Q19.16 
+    z2 = z2_temp + b12fixedinteger; % Q19.16 + Q19.16 = Q19.16
+    a2 = leaky_relu_fixed_point(z2,trial); % Q19.16 * Q19.16 = Q38.32
+
+    z3_temp = w23fixedinteger*a2;  % Q19.16 * Q38.32 = Q57.48
+    z3 = z3_temp + b23fixedinteger*(2^(2*trial)); % Q57.48 + Q19.16->Q51.48 = Q57.48
+    a3 = leaky_relu_second_stage(z3,trial); % Q19.16 * Q57.48 = Q76.64
+
     a3 = a3 /(2^64);
     
     %Get the index of the maximum output
