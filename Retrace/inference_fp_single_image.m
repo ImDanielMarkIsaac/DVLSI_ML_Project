@@ -1,4 +1,4 @@
-function [accuracy, prediction] = inference_fp_single_image(data,testd,w12,w23,b12,b23)
+function [accuracy, prediction,a1,z2_temp,z2,a2,z3_temp,z3,a3,a4] = inference_fp_single_image(data,testd,w12,w23,b12,b23)
 %Inference on test data
 
 %Test Data
@@ -84,15 +84,15 @@ success = 0;
 % % Final optimisation 4
 % % % Feed forward
 a1 = images(:,1);
-z2_temp = w12fixedinteger*a1; % Q10.8 
-z2 = z2_temp*(2^4) + b12fixedinteger; % Q10.8->Q14.12 + Q15.12 = Q15.12
+z2_temp = w12fixedinteger*a1; % Q11.8 
+z2 = z2_temp*(2^4) + b12fixedinteger; % Q11.8->Q15.12 + Q15.12 = Q15.12
 a2 = leaky_relu_fixed_point(z2); % Q14.12 * Q15.12 = Q29.24
 
 z3_temp = w23fixedinteger*a2;  % Q10.8 * Q29.24 = Q39.32
 z3 = z3_temp + b23fixedinteger*(2^(21)); % Q39.32 + Q13.11->Q34.32 = Q39.32
 a3 = leaky_relu_fixed_point(z3); % Q14.12 * Q39.32 = Q53.44
 
-a3 = a3 /(2^44);
+a4 = a3 /(2^44);
 
 
 %Get the index of the maximum output

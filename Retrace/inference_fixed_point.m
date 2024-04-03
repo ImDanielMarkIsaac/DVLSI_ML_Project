@@ -81,7 +81,6 @@ for i = 1:testd
     % a3 = leaky_relu_second_stage(z3); % Q64 * Q64 = Q128
     % a3 = a3 /(2^128);
 
-
     % % Final optimisation
     % % % Feed forward
     % a1 = images(:,i);
@@ -121,11 +120,24 @@ for i = 1:testd
     % 
     % a3 = a3 /(2^44);
 
-    % % Final optimisation 4
+    % % % Final optimisation 4
+    % % % % Feed forward
+    % a1 = images(:,i);
+    % z2_temp = w12fixedinteger*a1; % Q10.8 
+    % z2 = z2_temp*(2^4) + b12fixedinteger; % Q10.8->Q14.12 + Q15.12 = Q15.12
+    % a2 = leaky_relu_fixed_point(z2); % Q14.12 * Q15.12 = Q29.24
+    % 
+    % z3_temp = w23fixedinteger*a2;  % Q10.8 * Q29.24 = Q39.32
+    % z3 = z3_temp + b23fixedinteger*(2^(21)); % Q39.32 + Q13.11->Q34.32 = Q39.32
+    % a3 = leaky_relu_fixed_point(z3); % Q14.12 * Q39.32 = Q53.44
+    % 
+    % a3 = a3 /(2^44);
+
+    % % Final optimisation 5
     % % % Feed forward
     a1 = images(:,i);
-    z2_temp = w12fixedinteger*a1; % Q10.8 
-    z2 = z2_temp*(2^4) + b12fixedinteger; % Q10.8->Q14.12 + Q15.12 = Q15.12
+    z2_temp = w12fixedinteger*a1; % Q10.8 * Q1.0 = Q11.8
+    z2 = z2_temp*(2^4) + b12fixedinteger; % Q11.8->Q15.12 + Q15.12 = Q15.12
     a2 = leaky_relu_fixed_point(z2); % Q14.12 * Q15.12 = Q29.24
 
     z3_temp = w23fixedinteger*a2;  % Q10.8 * Q29.24 = Q39.32
@@ -133,6 +145,7 @@ for i = 1:testd
     a3 = leaky_relu_fixed_point(z3); % Q14.12 * Q39.32 = Q53.44
 
     a3 = a3 /(2^44);
+
     
     %Get the index of the maximum output
     [maxv1,index1] = max(a3);

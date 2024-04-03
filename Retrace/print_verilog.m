@@ -1,7 +1,8 @@
-[w12fixedfloat , w12fixedinteger ,err] = fixedpoint1(w12,11,8,1);
-[w23fixedfloat , w23fixedinteger ,err] = fixedpoint1(w23,19,16,1);
-[b12fixedfloat , b12fixedinteger ,err] = fixedpoint1(b12,11,8,1);
-[b23fixedfloat , b23fixedinteger ,err] = fixedpoint1(b23,35,32,1);
+% % % Final optimisation 4
+% [w12fixedfloat , w12fixedinteger ,err] = fixedpoint1(w12,10,8,1);
+% [b12fixedfloat , b12fixedinteger ,err] = fixedpoint1(b12,15,12,1);
+% [w23fixedfloat , w23fixedinteger ,err] = fixedpoint1(w23,10,8,1);
+% [b23fixedfloat , b23fixedinteger ,err] = fixedpoint1(b23,13,11,1);
 
 file = fopen("w12_verilog.txt","w");
 
