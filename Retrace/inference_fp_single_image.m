@@ -36,23 +36,64 @@ fprintf("Correct answer %d \n",labels_ts(1));
 % [b12fixedfloat , b12fixedinteger ,err] = fixedpoint1(b12,19,16,1);
 % [b23fixedfloat , b23fixedinteger ,err] = fixedpoint1(b23,67,64,1);
 
-[w12fixedfloat , w12fixedinteger ,err] = fixedpoint1(w12,15,13,1);
-[b12fixedfloat , b12fixedinteger ,err] = fixedpoint1(b12,16,13,1);
-[w23fixedfloat , w23fixedinteger ,err] = fixedpoint1(w23,14,12,1);
-[b23fixedfloat , b23fixedinteger ,err] = fixedpoint1(b23,14,12,1);
+% % Final optimisation 2
+% [w12fixedfloat , w12fixedinteger ,err] = fixedpoint1(w12,15,13,1);
+% [b12fixedfloat , b12fixedinteger ,err] = fixedpoint1(b12,16,13,1);
+% [w23fixedfloat , w23fixedinteger ,err] = fixedpoint1(w23,14,12,1);
+% [b23fixedfloat , b23fixedinteger ,err] = fixedpoint1(b23,14,12,1);
+
+% % % Final optimisation 3
+% [w12fixedfloat , w12fixedinteger ,err] = fixedpoint1(w12,12,10,1);
+% [b12fixedfloat , b12fixedinteger ,err] = fixedpoint1(b12,15,12,1);
+% [w23fixedfloat , w23fixedinteger ,err] = fixedpoint1(w23,10,8,1);
+% [b23fixedfloat , b23fixedinteger ,err] = fixedpoint1(b23,13,11,1);
+
+% % Final optimisation 4
+[w12fixedfloat , w12fixedinteger ,err] = fixedpoint1(w12,10,8,1);
+[b12fixedfloat , b12fixedinteger ,err] = fixedpoint1(b12,15,12,1);
+[w23fixedfloat , w23fixedinteger ,err] = fixedpoint1(w23,10,8,1);
+[b23fixedfloat , b23fixedinteger ,err] = fixedpoint1(b23,13,11,1);
 
 success = 0;
-    
+
+% % % Final optimisation 2
+% a1 = images(:,1);
+% z2_temp = w12fixedinteger*a1; % Q15.13 
+% z2 = z2_temp + b12fixedinteger; % Q15.13 + Q16.13 = Q16.13
+% a2 = leaky_relu_fixed_point(z2); % Q14.12 * Q16.13 = Q30.25
+% 
+% z3_temp = w23fixedinteger*a2;  % Q14.12 * Q30.25 = Q44.37
+% z3 = z3_temp + b23fixedinteger*(2^(25)); % Q44.37 + Q14.12->Q39.37 = Q44.37
+% a3 = leaky_relu_fixed_point(z3); % Q14.12 * Q44.37 = Q58.49
+% 
+% a3 = a3 /(2^49);
+
+% % % Final optimisation 3
+% % % % Feed forward
+% a1 = images(:,1);
+% z2_temp = w12fixedinteger*a1; % Q12.10 
+% z2 = z2_temp*(2^2) + b12fixedinteger; % Q12.10->Q14.12 + Q15.12 = Q15.12
+% a2 = leaky_relu_fixed_point(z2); % Q14.12 * Q15.12 = Q29.24
+% 
+% z3_temp = w23fixedinteger*a2;  % Q10.8 * Q29.24 = Q39.32
+% z3 = z3_temp + b23fixedinteger*(2^(21)); % Q39.32 + Q13.11->Q34.32 = Q39.32
+% a3 = leaky_relu_fixed_point(z3); % Q14.12 * Q39.32 = Q53.44
+% 
+% a3 = a3 /(2^44);
+
+% % Final optimisation 4
+% % % Feed forward
 a1 = images(:,1);
-z2_temp = w12fixedinteger*a1; % Q15.13 
-z2 = z2_temp + b12fixedinteger; % Q15.13 + Q16.13 = Q16.13
-a2 = leaky_relu_fixed_point(z2); % Q14.12 * Q16.13 = Q30.25
+z2_temp = w12fixedinteger*a1; % Q10.8 
+z2 = z2_temp*(2^4) + b12fixedinteger; % Q10.8->Q14.12 + Q15.12 = Q15.12
+a2 = leaky_relu_fixed_point(z2); % Q14.12 * Q15.12 = Q29.24
 
-z3_temp = w23fixedinteger*a2;  % Q14.12 * Q30.25 = Q44.37
-z3 = z3_temp + b23fixedinteger*(2^(25)); % Q44.37 + Q14.12->Q39.37 = Q44.37
-a3 = leaky_relu_fixed_point(z3); % Q14.12 * Q44.37 = Q58.49
+z3_temp = w23fixedinteger*a2;  % Q10.8 * Q29.24 = Q39.32
+z3 = z3_temp + b23fixedinteger*(2^(21)); % Q39.32 + Q13.11->Q34.32 = Q39.32
+a3 = leaky_relu_fixed_point(z3); % Q14.12 * Q39.32 = Q53.44
 
-a3 = a3 /(2^49);
+a3 = a3 /(2^44);
+
 
 %Get the index of the maximum output
 [maxv1,index1] = max(a3);

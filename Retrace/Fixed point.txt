@@ -8,3 +8,25 @@ Changes:
 Train Accuracy: 98.454545 % 
 Test Accuracy: 92.292089 % 
 Full Test Accuracy: 96.547395 % 
+
+Iteration 2:
+Changes:
+    [w12fixedfloat , w12fixedinteger ,err] = fixedpoint1(w12,12,10,1);
+    [b12fixedfloat , b12fixedinteger ,err] = fixedpoint1(b12,15,12,1);
+    [w23fixedfloat , w23fixedinteger ,err] = fixedpoint1(w23,10,8,1);
+    [b23fixedfloat , b23fixedinteger ,err] = fixedpoint1(b23,13,11,1);
+
+Train Accuracy: 98.363636 % 
+Test Accuracy: 91.886410 % 
+Full Test Accuracy: 96.359071 % 
+
+Iteration 3:
+Changes:
+    [w12fixedfloat , w12fixedinteger ,err] = fixedpoint1(w12,10,8,1);
+    [b12fixedfloat , b12fixedinteger ,err] = fixedpoint1(b12,15,12,1);
+    [w23fixedfloat , w23fixedinteger ,err] = fixedpoint1(w23,10,8,1);
+    [b23fixedfloat , b23fixedinteger ,err] = fixedpoint1(b23,13,11,1);
+
+Train Accuracy: 97.727273 % 
+Test Accuracy: 89.452333 % 
+Full Test Accuracy: 95.166353 % 
