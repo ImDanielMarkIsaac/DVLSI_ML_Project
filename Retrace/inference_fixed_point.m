@@ -54,6 +54,45 @@ end
 
 success = 0;
 for i = 1:testd
+
+    
+    % % % Normal Naive approach
+    % % Feed forward
+    % a1 = images(:,i);
+    % [a1fixedfloat , a1fixedinteger ,err] = fixedpoint1(a1,19,16,1);
+    % z2_temp = w12fixedinteger*a1fixedinteger; % Q16 * Q16 = Q32
+    % z2 = z2_temp + b12fixedinteger; % Q32 + Q32 = Q32
+    % a2 = leaky_relu_fixed_point(z2); % Q32 * Q32 = Q64 
+    % z3_temp = w23fixedinteger*a2;  % Q64 * Q64 = Q128
+    % z3 = z3_temp + b23fixedinteger; % Q128 + Q128 = Q128
+    % a3 = leaky_relu_second_stage(z3); % Q128 * Q128 = Q256
+    % a3 = a3 /(2^256);
+
+    % % Disregarded fixed point conversion for input image
+    % Feed forward
+    % a1 = images(:,i);
+    % % [a1fixedfloat , a1fixedinteger ,err] = fixedpoint1(a1,19,16,1);
+    % z2_temp = w12fixedinteger*a1; % Q16 
+    % z2 = z2_temp + b12fixedinteger; % Q16 + Q16 = Q16
+    % a2 = leaky_relu_fixed_point(z2); % Q16 * Q16 = Q32 
+    % z3_temp = w23fixedinteger*a2;  % Q32 * Q32 = Q64
+    % % z3_temp = w23fixedfloat*a2;  % Q32 * Q32 = Q64
+    % z3 = z3_temp + b23fixedinteger; % Q64 + Q64 = Q64
+    % a3 = leaky_relu_second_stage(z3); % Q64 * Q64 = Q128
+    % a3 = a3 /(2^128);
+
+
+    % % Final optimisation
+    % % % Feed forward
+    % a1 = images(:,i);
+    % z2_temp = w12fixedinteger*a1; % Q8 
+    % z2 = z2_temp + b12fixedinteger; % Q8 + Q8 = Q8
+    % a2 = leaky_relu_fixed_point(z2); % Q8 * Q8 = Q16 
+    % z3_temp = w23fixedinteger*a2;  % Q16 * Q16 = Q32
+    % z3 = z3_temp + b23fixedinteger; % Q32 + Q32 = Q32
+    % a3 = leaky_relu_second_stage(z3); % Q32 * Q32 = Q64
+    % a3 = a3 /(2^64);
+
     % % % Final optimisation 2
     % % % % Feed forward
     % a1 = images(:,i);
