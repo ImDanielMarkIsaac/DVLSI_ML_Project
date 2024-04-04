@@ -144,8 +144,9 @@ for i = 1:testd
     z3 = z3_temp + b23fixedinteger*(2^(21)); % Q39.32 + Q13.11->Q34.32 = Q39.32
     a3 = leaky_relu_fixed_point(z3); % Q14.12 * Q39.32 = Q53.44
 
-    a3 = a3 /(2^44);
-
+    a3 = a3 /(2^44); % Q9.0
+    
+    
     
     %Get the index of the maximum output
     [maxv1,index1] = max(a3);
