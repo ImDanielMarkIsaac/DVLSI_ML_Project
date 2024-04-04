@@ -12,14 +12,14 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0.000000 us"></ZoomStartTime>
-      <ZoomEndTime time="14.473394 us"></ZoomEndTime>
-      <Cursor1Time time="394.306807 us"></Cursor1Time>
+      <ZoomEndTime time="42.564409 us"></ZoomEndTime>
+      <Cursor1Time time="394.400000 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="129"></NameColumnWidth>
-      <ValueColumnWidth column_width="334"></ValueColumnWidth>
+      <ValueColumnWidth column_width="322"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="12" />
+   <WVObjectSize size="13" />
    <wvobject fp_name="/TB/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -35,6 +35,10 @@
    <wvobject fp_name="/TB/image" type="array">
       <obj_property name="ElementShortName">image[0:255]</obj_property>
       <obj_property name="ObjectShortName">image[0:255]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB/Ten_digits" type="array">
+      <obj_property name="ElementShortName">Ten_digits[0:9][0:255]</obj_property>
+      <obj_property name="ObjectShortName">Ten_digits[0:9][0:255]</obj_property>
    </wvobject>
    <wvobject fp_name="/TB/Done" type="logic">
       <obj_property name="ElementShortName">Done</obj_property>
@@ -55,12 +59,10 @@
    <wvobject fp_name="/TB/tot" type="array">
       <obj_property name="ElementShortName">tot[0:11]</obj_property>
       <obj_property name="ObjectShortName">tot[0:11]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/TB/correct" type="array">
       <obj_property name="ElementShortName">correct[0:11]</obj_property>
       <obj_property name="ObjectShortName">correct[0:11]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/TB/one_hot" type="array">
       <obj_property name="ElementShortName">one_hot[0:9]</obj_property>

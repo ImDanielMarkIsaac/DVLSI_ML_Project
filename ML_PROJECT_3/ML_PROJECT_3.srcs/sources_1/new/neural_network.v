@@ -98,18 +98,9 @@ begin
         end
     s1: // Reset state
         begin
-            if(count == 29)
-                begin
-                    ps <= s2;
-                    count <= 0;
-                    prst   <= 0;
-                    Mul_1 <= 1;
-                end
-            else
-                begin
-                    ps <= s1;
-                    count <= count + 1;
-                end 
+            ps <= s2;
+            prst   <= 0;
+            Mul_1 <= 1;   
         end
     s2: // Mul_1 state
         begin
@@ -228,7 +219,36 @@ always@(posedge clk)
 begin
     if(prst == 1)
     begin
-        Mul_1_out[count] = 30'd0;
+        Mul_1_out[0] = 11'd0;
+        Mul_1_out[1] = 11'd0;
+        Mul_1_out[2] = 11'd0;
+        Mul_1_out[3] = 11'd0;
+        Mul_1_out[4] = 11'd0;
+        Mul_1_out[5] = 11'd0;
+        Mul_1_out[6] = 11'd0;
+        Mul_1_out[7] = 11'd0;
+        Mul_1_out[8] = 11'd0;
+        Mul_1_out[9] = 11'd0;
+        Mul_1_out[10] = 11'd0;
+        Mul_1_out[11] = 11'd0;
+        Mul_1_out[12] = 11'd0;
+        Mul_1_out[13] = 11'd0;
+        Mul_1_out[14] = 11'd0;
+        Mul_1_out[15] = 11'd0;
+        Mul_1_out[16] = 11'd0;
+        Mul_1_out[17] = 11'd0;
+        Mul_1_out[18] = 11'd0;
+        Mul_1_out[19] = 11'd0;
+        Mul_1_out[20] = 11'd0;
+        Mul_1_out[21] = 11'd0;
+        Mul_1_out[22] = 11'd0;
+        Mul_1_out[23] = 11'd0;
+        Mul_1_out[24] = 11'd0;
+        Mul_1_out[25] = 11'd0;
+        Mul_1_out[26] = 11'd0;
+        Mul_1_out[27] = 11'd0;
+        Mul_1_out[28] = 11'd0;
+        Mul_1_out[29] = 11'd0;
     end
 
     if(Mul_1 == 1)
@@ -303,7 +323,36 @@ always@(posedge clk)
 begin
     if(prst == 1)
     begin
-        Add_1_out[count] = 30'd0;
+        Add_1_out[0] = 15'd0;
+        Add_1_out[1] = 15'd0;
+        Add_1_out[2] = 15'd0;
+        Add_1_out[3] = 15'd0;
+        Add_1_out[4] = 15'd0;
+        Add_1_out[5] = 15'd0;
+        Add_1_out[6] = 15'd0;
+        Add_1_out[7] = 15'd0;
+        Add_1_out[8] = 15'd0;
+        Add_1_out[9] = 15'd0;
+        Add_1_out[10] = 15'd0;
+        Add_1_out[11] = 15'd0;
+        Add_1_out[12] = 15'd0;
+        Add_1_out[13] = 15'd0;
+        Add_1_out[14] = 15'd0;
+        Add_1_out[15] = 15'd0;
+        Add_1_out[16] = 15'd0;
+        Add_1_out[17] = 15'd0;
+        Add_1_out[18] = 15'd0;
+        Add_1_out[19] = 15'd0;
+        Add_1_out[20] = 15'd0;
+        Add_1_out[21] = 15'd0;
+        Add_1_out[22] = 15'd0;
+        Add_1_out[23] = 15'd0;
+        Add_1_out[24] = 15'd0;
+        Add_1_out[25] = 15'd0;
+        Add_1_out[26] = 15'd0;
+        Add_1_out[27] = 15'd0;
+        Add_1_out[28] = 15'd0;
+        Add_1_out[29] = 15'd0;
     end
 
     if(Add_1 == 1)
@@ -346,7 +395,36 @@ always@(posedge clk)
 begin
     if(prst == 1)
     begin
-        ReLU_1_out[count] = 30'd0;
+        ReLU_1_out[0] = 29'd0;
+        ReLU_1_out[1] = 29'd0;
+        ReLU_1_out[2] = 29'd0;
+        ReLU_1_out[3] = 29'd0;
+        ReLU_1_out[4] = 29'd0;
+        ReLU_1_out[5] = 29'd0;
+        ReLU_1_out[6] = 29'd0;
+        ReLU_1_out[7] = 29'd0;
+        ReLU_1_out[8] = 29'd0;
+        ReLU_1_out[9] = 29'd0;
+        ReLU_1_out[10] = 29'd0;
+        ReLU_1_out[11] = 29'd0;
+        ReLU_1_out[12] = 29'd0;
+        ReLU_1_out[13] = 29'd0;
+        ReLU_1_out[14] = 29'd0;
+        ReLU_1_out[15] = 29'd0;
+        ReLU_1_out[16] = 29'd0;
+        ReLU_1_out[17] = 29'd0;
+        ReLU_1_out[18] = 29'd0;
+        ReLU_1_out[19] = 29'd0;
+        ReLU_1_out[20] = 29'd0;
+        ReLU_1_out[21] = 29'd0;
+        ReLU_1_out[22] = 29'd0;
+        ReLU_1_out[23] = 29'd0;
+        ReLU_1_out[24] = 29'd0;
+        ReLU_1_out[25] = 29'd0;
+        ReLU_1_out[26] = 29'd0;
+        ReLU_1_out[27] = 29'd0;
+        ReLU_1_out[28] = 29'd0;
+        ReLU_1_out[29] = 29'd0;
     end
 
     if(ReLU_1 == 1)
@@ -367,10 +445,16 @@ always@(posedge clk)
 begin
     if(prst == 1)
     begin
-        if(count < 10)
-        begin
-            Mul_2_out[count] = 10'd0;
-        end
+        Mul_2_out[0] = 39'd0;
+        Mul_2_out[1] = 39'd0;
+        Mul_2_out[2] = 39'd0;
+        Mul_2_out[3] = 39'd0;
+        Mul_2_out[4] = 39'd0;
+        Mul_2_out[5] = 39'd0;
+        Mul_2_out[6] = 39'd0;
+        Mul_2_out[7] = 39'd0;
+        Mul_2_out[8] = 39'd0;
+        Mul_2_out[9] = 39'd0;
     end
 
     if(Mul_2 == 1)
@@ -404,10 +488,16 @@ always@(posedge clk)
 begin
     if(prst == 1)
     begin
-        if(count < 10)
-        begin
-            Add_2_out[count] = 10'd0;
-        end
+        Add_2_out[0] = 39'd0;
+        Add_2_out[1] = 39'd0;
+        Add_2_out[2] = 39'd0;
+        Add_2_out[3] = 39'd0;
+        Add_2_out[4] = 39'd0;
+        Add_2_out[5] = 39'd0;
+        Add_2_out[6] = 39'd0;
+        Add_2_out[7] = 39'd0;
+        Add_2_out[8] = 39'd0;
+        Add_2_out[9] = 39'd0;
     end
 
     if(Add_2 == 1)
@@ -430,10 +520,16 @@ always@(posedge clk)
 begin
     if(prst == 1)
     begin
-        if(count < 10)
-        begin
-            ReLU_2_out[count] = 10'd0;
-        end
+        ReLU_2_out[0] = 53'd0;
+        ReLU_2_out[1] = 53'd0;
+        ReLU_2_out[2] = 53'd0;
+        ReLU_2_out[3] = 53'd0;
+        ReLU_2_out[4] = 53'd0;
+        ReLU_2_out[5] = 53'd0;
+        ReLU_2_out[6] = 53'd0;
+        ReLU_2_out[7] = 53'd0;
+        ReLU_2_out[8] = 53'd0;
+        ReLU_2_out[9] = 53'd0;
     end
 
     if(ReLU_2 == 1)
@@ -455,11 +551,8 @@ begin
 
     if(prst == 1)
     begin
-        if(count == 0)
-        begin
-            Max_out  = 1'd0;
-            Max_temp = 1'd0;
-        end
+        Max_out  = 1'd0;
+        Max_temp = 1'd0;
     end
 
     if(Max == 1)

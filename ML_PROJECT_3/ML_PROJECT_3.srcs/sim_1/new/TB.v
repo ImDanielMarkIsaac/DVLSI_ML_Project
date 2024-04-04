@@ -67,7 +67,7 @@ begin
         start <= 1;
         #2;
         start <= 0;
-        #800;
+        #700;
         if( prediction == k)
         begin
             correct = correct + 1;
