@@ -206,8 +206,7 @@ begin
     begin
 	    prediction <= 0;
     end
-
-    if(Done == 1)
+    else if(Done == 1)
     begin
         prediction <= Max_out;
     end
@@ -250,8 +249,7 @@ begin
         Mul_1_out[28] = 11'd0;
         Mul_1_out[29] = 11'd0;
     end
-
-    if(Mul_1 == 1)
+    else if(Mul_1 == 1)
     begin
         Mul_1_out[0] = Mul_1_out[0] + w12[0][count]*image[count];
         Mul_1_out[1] = Mul_1_out[1] + w12[1][count]*image[count];
@@ -354,8 +352,7 @@ begin
         Add_1_out[28] = 15'd0;
         Add_1_out[29] = 15'd0;
     end
-
-    if(Add_1 == 1)
+    else if(Add_1 == 1)
     begin
         Add_1_out[0] = Shifted_Mul_1_out[0] + b12[0];
         Add_1_out[1] = Shifted_Mul_1_out[1] + b12[1];
@@ -426,8 +423,7 @@ begin
         ReLU_1_out[28] = 29'd0;
         ReLU_1_out[29] = 29'd0;
     end
-
-    if(ReLU_1 == 1)
+    else if(ReLU_1 == 1)
     begin
         if(Add_1_out[count][0] == 0)
             begin
@@ -456,8 +452,7 @@ begin
         Mul_2_out[8] = 39'd0;
         Mul_2_out[9] = 39'd0;
     end
-
-    if(Mul_2 == 1)
+    else if(Mul_2 == 1)
     begin
         Mul_2_out[0] = Mul_2_out[0] + w23[0][count] * ReLU_1_out[count];
         Mul_2_out[1] = Mul_2_out[1] + w23[1][count] * ReLU_1_out[count];
@@ -499,8 +494,7 @@ begin
         Add_2_out[8] = 39'd0;
         Add_2_out[9] = 39'd0;
     end
-
-    if(Add_2 == 1)
+    else if(Add_2 == 1)
     begin
         Add_2_out[0] = Mul_2_out[0] + Shifted_b23[0];
         Add_2_out[1] = Mul_2_out[1] + Shifted_b23[1];
@@ -531,8 +525,7 @@ begin
         ReLU_2_out[8] = 53'd0;
         ReLU_2_out[9] = 53'd0;
     end
-
-    if(ReLU_2 == 1)
+    else if(ReLU_2 == 1)
     begin
         if(Add_2_out[count][0] == 0)
         begin
@@ -554,8 +547,7 @@ begin
         Max_out  = 1'd0;
         Max_temp = 1'd0;
     end
-
-    if(Max == 1)
+    else if(Max == 1)
     begin
 
         if(count == 0)
