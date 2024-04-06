@@ -17,163 +17,59 @@
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="248"></NameColumnWidth>
-      <ValueColumnWidth column_width="211"></ValueColumnWidth>
+      <ValueColumnWidth column_width="207"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="39" />
-   <wvobject fp_name="/TB/n1/clk" type="logic">
+   <WVObjectSize size="13" />
+   <wvobject fp_name="/TB/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
    </wvobject>
-   <wvobject fp_name="/TB/n1/rst" type="logic">
+   <wvobject fp_name="/TB/rst" type="logic">
       <obj_property name="ElementShortName">rst</obj_property>
       <obj_property name="ObjectShortName">rst</obj_property>
    </wvobject>
-   <wvobject fp_name="/TB/n1/start" type="logic">
+   <wvobject fp_name="/TB/start" type="logic">
       <obj_property name="ElementShortName">start</obj_property>
       <obj_property name="ObjectShortName">start</obj_property>
    </wvobject>
-   <wvobject fp_name="/TB/n1/image" type="array">
+   <wvobject fp_name="/TB/image" type="array">
       <obj_property name="ElementShortName">image[0:255]</obj_property>
       <obj_property name="ObjectShortName">image[0:255]</obj_property>
    </wvobject>
-   <wvobject fp_name="/TB/n1/Done" type="logic">
+   <wvobject fp_name="/TB/Ten_digits" type="array">
+      <obj_property name="ElementShortName">Ten_digits[0:9][0:255]</obj_property>
+      <obj_property name="ObjectShortName">Ten_digits[0:9][0:255]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB/Done" type="logic">
       <obj_property name="ElementShortName">Done</obj_property>
       <obj_property name="ObjectShortName">Done</obj_property>
    </wvobject>
-   <wvobject fp_name="/TB/n1/prediction" type="array">
+   <wvobject fp_name="/TB/prediction" type="array">
       <obj_property name="ElementShortName">prediction[0:3]</obj_property>
       <obj_property name="ObjectShortName">prediction[0:3]</obj_property>
    </wvobject>
-   <wvobject fp_name="/TB/n1/ps" type="array">
-      <obj_property name="ElementShortName">ps[0:3]</obj_property>
-      <obj_property name="ObjectShortName">ps[0:3]</obj_property>
+   <wvobject fp_name="/TB/Labels" type="array">
+      <obj_property name="ElementShortName">Labels[0:1592][0:9]</obj_property>
+      <obj_property name="ObjectShortName">Labels[0:1592][0:9]</obj_property>
    </wvobject>
-   <wvobject fp_name="/TB/n1/prst" type="logic">
-      <obj_property name="ElementShortName">prst</obj_property>
-      <obj_property name="ObjectShortName">prst</obj_property>
+   <wvobject fp_name="/TB/k" type="array">
+      <obj_property name="ElementShortName">k[31:0]</obj_property>
+      <obj_property name="ObjectShortName">k[31:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/TB/n1/Mul_1" type="logic">
-      <obj_property name="ElementShortName">Mul_1</obj_property>
-      <obj_property name="ObjectShortName">Mul_1</obj_property>
+   <wvobject fp_name="/TB/tot" type="array">
+      <obj_property name="ElementShortName">tot[0:11]</obj_property>
+      <obj_property name="ObjectShortName">tot[0:11]</obj_property>
    </wvobject>
-   <wvobject fp_name="/TB/n1/Add_1" type="logic">
-      <obj_property name="ElementShortName">Add_1</obj_property>
-      <obj_property name="ObjectShortName">Add_1</obj_property>
+   <wvobject fp_name="/TB/correct" type="array">
+      <obj_property name="ElementShortName">correct[0:11]</obj_property>
+      <obj_property name="ObjectShortName">correct[0:11]</obj_property>
    </wvobject>
-   <wvobject fp_name="/TB/n1/ReLU_1" type="logic">
-      <obj_property name="ElementShortName">ReLU_1</obj_property>
-      <obj_property name="ObjectShortName">ReLU_1</obj_property>
+   <wvobject fp_name="/TB/one_hot" type="array">
+      <obj_property name="ElementShortName">one_hot[0:9]</obj_property>
+      <obj_property name="ObjectShortName">one_hot[0:9]</obj_property>
    </wvobject>
-   <wvobject fp_name="/TB/n1/Mul_2" type="logic">
-      <obj_property name="ElementShortName">Mul_2</obj_property>
-      <obj_property name="ObjectShortName">Mul_2</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TB/n1/Add_2" type="logic">
-      <obj_property name="ElementShortName">Add_2</obj_property>
-      <obj_property name="ObjectShortName">Add_2</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TB/n1/ReLU_2" type="logic">
-      <obj_property name="ElementShortName">ReLU_2</obj_property>
-      <obj_property name="ObjectShortName">ReLU_2</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TB/n1/Max" type="logic">
-      <obj_property name="ElementShortName">Max</obj_property>
-      <obj_property name="ObjectShortName">Max</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TB/n1/count" type="array">
-      <obj_property name="ElementShortName">count[0:7]</obj_property>
-      <obj_property name="ObjectShortName">count[0:7]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TB/n1/Mul_1_out" type="array">
-      <obj_property name="ElementShortName">Mul_1_out[0:29][0:10]</obj_property>
-      <obj_property name="ObjectShortName">Mul_1_out[0:29][0:10]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TB/n1/Shifted_Mul_1_out" type="array">
-      <obj_property name="ElementShortName">Shifted_Mul_1_out[0:29][0:14]</obj_property>
-      <obj_property name="ObjectShortName">Shifted_Mul_1_out[0:29][0:14]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TB/n1/Add_1_out" type="array">
-      <obj_property name="ElementShortName">Add_1_out[0:29][0:14]</obj_property>
-      <obj_property name="ObjectShortName">Add_1_out[0:29][0:14]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TB/n1/ReLU_1_out" type="array">
-      <obj_property name="ElementShortName">ReLU_1_out[0:29][0:28]</obj_property>
-      <obj_property name="ObjectShortName">ReLU_1_out[0:29][0:28]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TB/n1/Mul_2_out" type="array">
-      <obj_property name="ElementShortName">Mul_2_out[0:9][0:38]</obj_property>
-      <obj_property name="ObjectShortName">Mul_2_out[0:9][0:38]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TB/n1/Shifted_b23" type="array">
-      <obj_property name="ElementShortName">Shifted_b23[0:9][0:33]</obj_property>
-      <obj_property name="ObjectShortName">Shifted_b23[0:9][0:33]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TB/n1/Add_2_out" type="array">
-      <obj_property name="ElementShortName">Add_2_out[0:9][0:38]</obj_property>
-      <obj_property name="ObjectShortName">Add_2_out[0:9][0:38]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TB/n1/ReLU_2_out" type="array">
-      <obj_property name="ElementShortName">ReLU_2_out[0:9][0:52]</obj_property>
-      <obj_property name="ObjectShortName">ReLU_2_out[0:9][0:52]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TB/n1/Max_temp" type="array">
-      <obj_property name="ElementShortName">Max_temp[0:52]</obj_property>
-      <obj_property name="ObjectShortName">Max_temp[0:52]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TB/n1/Max_out" type="array">
-      <obj_property name="ElementShortName">Max_out[0:3]</obj_property>
-      <obj_property name="ObjectShortName">Max_out[0:3]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TB/n1/w23" type="array">
-      <obj_property name="ElementShortName">w23[0:9][0:29][0:9]</obj_property>
-      <obj_property name="ObjectShortName">w23[0:9][0:29][0:9]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TB/n1/b12" type="array">
-      <obj_property name="ElementShortName">b12[0:29][0:14]</obj_property>
-      <obj_property name="ObjectShortName">b12[0:29][0:14]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TB/n1/b23" type="array">
-      <obj_property name="ElementShortName">b23[0:9][0:12]</obj_property>
-      <obj_property name="ObjectShortName">b23[0:9][0:12]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TB/n1/s0" type="array">
-      <obj_property name="ElementShortName">s0[3:0]</obj_property>
-      <obj_property name="ObjectShortName">s0[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TB/n1/s1" type="array">
-      <obj_property name="ElementShortName">s1[3:0]</obj_property>
-      <obj_property name="ObjectShortName">s1[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TB/n1/s2" type="array">
-      <obj_property name="ElementShortName">s2[3:0]</obj_property>
-      <obj_property name="ObjectShortName">s2[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TB/n1/s3" type="array">
-      <obj_property name="ElementShortName">s3[3:0]</obj_property>
-      <obj_property name="ObjectShortName">s3[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TB/n1/s4" type="array">
-      <obj_property name="ElementShortName">s4[3:0]</obj_property>
-      <obj_property name="ObjectShortName">s4[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TB/n1/s5" type="array">
-      <obj_property name="ElementShortName">s5[3:0]</obj_property>
-      <obj_property name="ObjectShortName">s5[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TB/n1/s6" type="array">
-      <obj_property name="ElementShortName">s6[3:0]</obj_property>
-      <obj_property name="ObjectShortName">s6[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TB/n1/s7" type="array">
-      <obj_property name="ElementShortName">s7[3:0]</obj_property>
-      <obj_property name="ObjectShortName">s7[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TB/n1/s8" type="array">
-      <obj_property name="ElementShortName">s8[3:0]</obj_property>
-      <obj_property name="ObjectShortName">s8[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TB/n1/s9" type="array">
-      <obj_property name="ElementShortName">s9[3:0]</obj_property>
-      <obj_property name="ObjectShortName">s9[3:0]</obj_property>
+   <wvobject fp_name="/TB/Test_complete" type="logic">
+      <obj_property name="ElementShortName">Test_complete</obj_property>
+      <obj_property name="ObjectShortName">Test_complete</obj_property>
    </wvobject>
 </wave_config>

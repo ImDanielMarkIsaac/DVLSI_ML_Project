@@ -50,23 +50,10 @@ reg signed [0:52] ReLU_2_out [0:9];
 reg signed [0:52] Max_temp;
 reg signed [0:3]  Max_out;
 
-
-
 wire signed [0:10] w12 [0:29][0:255];
 wire signed [0:9] w23 [0:9][0:29];
 wire signed [0:14] b12 [0:29];
 wire signed [0:12] b23 [0:9];
-
-// parameter s0  = 10'b0000000001;
-// parameter s1  = 10'b0000000010;
-// parameter s2  = 10'b0000000100;
-// parameter s3  = 10'b0000001000;
-// parameter s4  = 10'b0000010000;
-// parameter s5  = 10'b0000100000;
-// parameter s6  = 10'b0001000000;
-// parameter s7  = 10'b0010000000;
-// parameter s8  = 10'b0100000000;
-// parameter s9  = 10'b1000000000;
 
 parameter s0  = 4'd1;
 parameter s1  = 4'd2;
@@ -85,108 +72,8 @@ always@(posedge clk)
 begin
     if(rst == 1)
         begin
-            ps <= s0;
-        end
-    else
-        begin
-            case(ps)
-                s0: // Start state
-                    begin    
-                        if(start == 0)
-                            begin
-                                ps <= s0;
-                            end
-                        else
-                            begin
-                                ps <= s1; 
-                            end
-                    end
-                s1: // Reset state
-                    begin
-                        ps <= s2;
-                    end
-                s2: // Mul_1 state
-                    begin
-                        if(count == 255)
-                            begin
-                                ps <= s3;
-                            end
-                        else
-                            begin
-                                ps <= s2;
-                            end 
-                    end  
-                s3: // Add_1 state
-                    begin
-                        ps <= s4;
-                    end
-                s4: // ReLU_1 state
-                    begin
-                        if(count == 29)
-                            begin
-                                ps <= s5;
-                            end
-                        else
-                            begin
-                                ps <= s4;
-                            end
-                    end          
-                s5: // Mul_2 state
-                    begin
-                        if(count == 29)
-                            begin
-                                ps <= s6;
-                            end
-                        else
-                            begin
-                                ps <= s5;
-                            end                
-                    end         
-                s6: // Add_2 state
-                    begin
-                        ps <= s7;
-                    end
-                s7: // ReLU_2 state
-                    begin
-                        if(count == 9)
-                            begin
-                                ps <= s8;
-                            end
-                        else
-                            begin
-                                ps <= s7;
-                            end
-                    end    
-                s8: // Max state
-                    begin
-                        if(count == 8)
-                            begin
-                                ps <= s9;
-                            end
-                        else
-                            begin
-                                ps <= s8;
-                            end
-                    end
-                s9: // Done state
-                    begin
-                        ps <= s0;
-                    end 
-                default:
-                    begin
-                    ps     <= s0;  
-                    end                       
-            endcase  
-        end   
-end
-
-
-// Control Unit
-always@(posedge clk)
-begin
-    if(rst == 1)
-        begin
             prediction <= 4'b0;
+            ps <= s0;
         end
     else
         begin
@@ -204,132 +91,133 @@ begin
 
                         if(start == 0)
                             begin
-                                prst  <= 1'b0;
+                                prst   <= 1'b0;
+                                ps <= s0;
                                 count <= 8'b0;
                             end
                         else
                             begin
-                                prst  <= 1'b1;
+                                ps <= s1; 
+                                prst   <= 1'b1;
                             end
                     end
                 s1: // Reset state
                     begin
-                        prst  <= 1'b0;
+                        ps <= s2;
+                        prst   <= 1'b0;
                         Mul_1 <= 1'b1;   
                     end
                 s2: // Mul_1 state
                     begin
                         if(count == 255)
                             begin
+                                ps <= s3;
                                 count <= 8'b0;
                                 Mul_1 <= 1'b0;
                                 Add_1 <= 1'b1;
                             end
                         else
                             begin
-                                count <= count + 8'b1;
+                                ps <= s2;
+                                count <= count + 1'b1;
                             end 
                     end  
                 s3: // Add_1 state
                     begin
                         Add_1 <= 1'b0;
+                        ps <= s4;
                         ReLU_1 <= 1'b1;
                     end
                 s4: // ReLU_1 state
                     begin
                         if(count == 29)
                             begin
+                                ps <= s5;
                                 count <= 8'b0;
                                 ReLU_1 <= 1'b0;
                                 Mul_2 <= 1'b1;
                             end
                         else
                             begin
-                                count <= count + 8'b1;
+                                ps <= s4;
+                                count <= count + 1'b1;
                             end
                     end          
                 s5: // Mul_2 state
                     begin
                         if(count == 29)
                             begin
+                                ps <= s6;
                                 Mul_2 <= 1'b0;
                                 Add_2 <= 1'b1;
                                 count <= 8'b0;
                             end
                         else
                             begin
-                                count <= count + 8'b1;
+                                ps <= s5;
+                                count <= count + 1'b1;
                             end                
                     end         
                 s6: // Add_2 state
                     begin
                         Add_2 <= 1'b0;
                         ReLU_2 <= 1'b1;
+                        ps <= s7;
                     end
                 s7: // ReLU_2 state
                     begin
                         if(count == 9)
                             begin
                                 ReLU_2 <= 1'b0;
-                                Max <= 1'b1; 
+                                Max <= 1'b1;
+                                ps <= s8;
                                 count <= 8'b0;
                             end
                         else
                             begin
-                                count <= count + 8'b1;
+                                ps <= s7;
+                                count <= count + 1'b1;
                             end
                     end    
                 s8: // Max state
                     begin
                         if(count == 8)
                             begin
+                                ps <= s9;
                                 Max <= 1'b0;
                                 count <= 8'b0;
                             end
                         else
                             begin
-                                count <= count + 8'b1;
+                                ps <= s8;
+                                count <= count + 1'b1;
                             end
                     end
                 s9: // Done state
                     begin
+                        ps <= s0;
                         Done <= 1'b1;
                         prediction <= Max_out;
                     end 
                 default:
                     begin
-                        Mul_1  <= 1'b0;
-                        Add_1  <= 1'b0;
-                        ReLU_1 <= 1'b0;
-                        Mul_2  <= 1'b0;
-                        Add_2  <= 1'b0;
-                        ReLU_2 <= 1'b0;
-                        Max    <= 1'b0;
-                        Done   <= 1'b0;
-                        count  <= 8'b0;
-                        prediction <= 4'b0;
-                        prst   <= 1'b0;
+                    ps     <= s0;  
+                    Mul_1  <= 1'b0;
+                    Add_1  <= 1'b0;
+                    ReLU_1 <= 1'b0;
+                    Mul_2  <= 1'b0;
+                    Add_2  <= 1'b0;
+                    ReLU_2 <= 1'b0;
+                    Max    <= 1'b0;
+                    Done   <= 1'b0;
+                    count  <= 8'b0;
+                    prediction <= 4'b0;
+                    prst   <= 1'b0;
                     end                       
             endcase  
         end   
 end
 
-
-
-
-// // prediction reset
-// always@(posedge clk)
-// begin
-//     if(rst == 1)
-//     begin
-// 	    prediction <= 0;
-//     end
-//     else if(Done == 1)
-//     begin
-//         prediction <= Max_out;
-//     end
-	    
-// end
 
 // Mul_1_out
 always@(posedge clk)
@@ -672,7 +560,8 @@ begin
         begin
             Max_temp <= ReLU_2_out[0];
         end
-        else if(ReLU_2_out[count+1] >= Max_temp)
+
+        if(ReLU_2_out[count+1] >= Max_temp)
         begin
             Max_out <= count + 1;
             Max_temp <= ReLU_2_out[count+1];
