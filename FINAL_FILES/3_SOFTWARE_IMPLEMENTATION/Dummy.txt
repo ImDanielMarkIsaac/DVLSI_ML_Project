@@ -1,4 +1,7 @@
 • Tasks you performed on MATLAB.
+	Ran the training code multiple times with many different configurations, Until good accuracy is achieved in floating point.
+	During training, whenever good weights were obtained, I saved those weights in a private git repo, which I created for this project.
+	Then I found the minimum and maximum values present in w12,w23,b12,b23. And checked how many bits are needed to represent the integer part
 • Highlight any optimizations you performed on given code.
 
 • Fixed point design approach:

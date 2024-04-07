@@ -1,5 +1,4 @@
 function [outputfixedfloat , outputargfixedinteger ,err] = fixedpoint1(inputArg1,totalbits , fractionbits,action)
-
 err = 0;
 if(totalbits>=(fractionbits+1))
  integerbits = totalbits - fractionbits -1 ; %for sign
@@ -9,20 +8,17 @@ if(totalbits>=(fractionbits+1))
  inputArgFraction = inputArg1 - inputArgInteger;
  inputArgInteger(find((abs(inputArgInteger))>(2^integerbits-1))) = 0;
  outputargfixedinteger = inputArgInteger*(2^fractionbits) + floor(inputArgFraction*(2^fractionbits));
- inputarg1fixedfloat = outputargfixedinteger/(2^fractionbits);
- 
+ inputarg1fixedfloat = outputargfixedinteger/(2^fractionbits); 
 else
     outputfixedfloat = 0;
     outputargfixedinteger = 0;
     inputarg1fixedfloat=0;
     err = bitor(err,0x01);
 end
-
 %%%% check condition %%%
 if(~isequal(ceil(inputArg1),ceil(inputarg1fixedfloat)) && ~isequal(floor(inputArg1),floor(inputarg1fixedfloat)))
     err = bitor(err,0x02);
 end 
-
 if action == 1
     outputfixedfloat=inputarg1fixedfloat;
 else

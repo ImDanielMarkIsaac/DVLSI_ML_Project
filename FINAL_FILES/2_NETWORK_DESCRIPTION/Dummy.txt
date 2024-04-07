@@ -4,4 +4,4 @@
 	outputs, 10
 	number of neurons in hidden layer, 30
 	activation function for hidden layer, Leaky ReLU
-	output format, One - hot encoded
+	output format, One - hot encoded [Software], Predicted digit [Hardware]
